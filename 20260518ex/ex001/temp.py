@@ -30,6 +30,10 @@ student01 = {
 student02 = copy.deepcopy(student01)
 student01['나이'] = 100
 print(student02['나이']) #25
+# 이 이유는 deepcopy로 데이터까지 복사해왔기에 student02는 01과 같은 값을 가지게 되는데 그렇기에 01이 바뀌어도 02의 값은 여전하다.
+# 하면 같은 데이터를 가리키는 것이 아니라,
+# 아예 새로운 데이터를 따로 복사해서 가지게 됩니다.
+
 
 # x = 10
 
