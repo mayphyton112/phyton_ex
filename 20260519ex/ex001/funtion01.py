@@ -350,66 +350,175 @@ def forecastWeather(temp, humi, rain):
 
 심심하면 > 특정 회원의 회원ID, 회원PW를 입력받아 인증되면 회원 정보를 수정하는 기능을 구현해보자
 '''
-flag = True
-while flag:
-   userData = int(input(f'1.회원가입 2.로그인 3.특정 회원정보 출력 4. 모든 회원정보 출력 99. 종료'))
-   if userData == 1: 
-    input('[id, pw, email, phone]을 입력하세요: ')
+       
+# members = [
+#     {
+#         '이름': '이성규',
+#         '나이': 25,
+#         '성별': 'M',
+#         '연락처': '010-1234-5638',
+#         'id': 'kim48',
+#         'pw': 'pass2'
+#     },
+#     {
+#         '이름': '김성근',
+#         '나이': 30,
+#         '성별': 'M',
+#         '연락처': '010-1278-8903',
+#         'id': 'lee578',
+#         'pw': 'pass3'
+#     },
+#     {
+#         '이름': '이성태',
+#         '나이': 28,
+#         '성별': 'M',
+#         '연락처': '010-1278-7890',
+#         'id': 'hong123',
+#         'pw': 'pass4'
+#     },
+# ]
+
+# flag = True
+# while flag:
+#     userData = int(input('1.회원가입 2.로그인 3.특정 회원정보 출력 4.모든 회원정보 출력 99.종료: '))
+
+#     if userData == 1:
+#         inputs = input('[id, pw, email, phone]을 입력하세요: ').split(',')
+#         new_member = {
+#             'id': inputs[0].strip(),
+#             'pw': inputs[1].strip(),
+#             'email': inputs[2].strip(),
+#             'phone': inputs[3].strip()
+#         }
+#         members.append(new_member)
+#         print('회원가입이 완료되었습니다.')
+
+#     elif userData == 2:
+#         user_id = input('id 입력: ')
+#         user_pw = input('pw 입력: ')
+
+#         login_success = False
+#         for member in members:
+#             if member['id'] == user_id and member['pw'] == user_pw:
+#                 login_success = True
+#                 break
+
+#         if login_success:
+#             print('로그인 성공')
+#         else:
+#             print('로그인 실패')
+
+#     elif userData == 3:
+#         user_id = input('검색할 id 입력: ')
+#         find_members = False
+
+#         for member in members: 
+#             if member['id'] == user_id:
+#                 print(f"이름: {member['이름']}")
+#                 print(f"나이: {member['나이']}")
+#                 print(f"성별: {member['성별']}")
+#                 print(f"연락처: {member['연락처']}")
+#                 find_members = True
+#                 break
+
+#         if not find_members:
+#             print('회원정보 없음')
+
+#     elif userData == 4:
+#         for member in members:
+#             print(member)
+
+#     elif userData == 99:
+#         print('프로그램 종료')
+#         flag = False 
+
+#     else:
+#         print('잘못 입력했습니다.')
+
+members = [
+    {
+    'name' : '이성규',
+    'age' : 25,
+    'gender' : 'M',
+    'id' : 'kim48',
+    'pw' : 'pass2'
+    },
+    
+    {
+    'name' : '김성근',
+    'age' : 30,
+    'gender' : 'M',
+    'id' : 'lee578',
+    'pw' : 'pass3'
+    },
+    
+    {
+    'name' : '이성태',
+    'age' : 28,
+    'gender' : 'M',
+    'id' : 'hong123',
+    'pw' : 'pass4'
+    },
+
+
+]
+
+def sign_up():
+    inputData = input('[id, pw, email, phone]').split(',')
+    new_member = {
+        'id' : inputData[0].strip(),
+        'pw' : inputData[1].strip(),
+        'email' : inputData[2].strip(),
+        'phone' : inputData[3].strip()
+    }
+    members.append(new_member)
     print('회원가입이 완료되었습니다.')
-   
-#    members = [
-#       {'id': 'kim48', 'pw': 'pass2'},
-#       {'id': 'lee578', 'pw': 'pass3'},
-#       {'id': 'hong123', 'pw': 'pass4'},
-#    ]
 
-   if userData == 2:
-    user_id = input('id 입력:')
-    user_pw = input('pw 입력:')
-   
-    login_success = False
+    def login():
+        user_id = input('id 입력')
+        user_pw = input('pw 입력')
+
+        for member in members:
+            if member['id'] == user_id and member['pw'] == user_pw:
+                print('로그인 성공')
+                return
+         
+print('로그인 실패')
+print('id나 pw가 틀렸습니다. 다시 입력하세요')
+
+def find_members():
+    user_id = input('선택할 회원 id 입력: ')
+    
     for member in members:
-       if member['id'] ==user_id and member['pw'] ==user_pw:
-          login_success = True
-          break
+        if member['id'] == user_id:
+            print(f'name : {members['name']}')
+            print(f'age : {members['age']}')
+            print(f'gender: {members['gender']}')
+            print(f'phone : {members['phone']}')
+            return
+    print('회원정보 없음')
 
-    if login_success:
-       print('로그인 성공')
-    else:
-       print('로그인 실패')
-   
-   if userData == 3: 
-       
-    members =[ 
-      {'이름': '이성규',
-       '나이':  25,
-       '성별': 'M',
-       '연락처': '010-1234-5638',
-       'id': 'kim48',
-       'pw': 'pass2'
-       },
-       
-       {'이름': '김성근',
-       '나이':  30,
-       '성별': 'M',
-       '연락처': '010-1278-8903',
-       'id': 'lee578',
-       'pw': 'pass3'
-       },
-       
-       {'이름': '이성태',
-       '나이':  28,
-       '성별': 'M',
-       '연락처': '010-1278-7890',
-       'id': 'hong123',
-       'pw': 'pass4'
-       },
-   ]
-   user_id = input('id 입력:')
-   user_pw = input('pw 입력:')
-   if user_id and user_pw: True
-   print('members')
 
-def opperateProgram():
-        pass
-flag +=1
+def print_all_members():
+    for member in members:
+        print(member)
+
+def main():
+    while True:
+        inputData  = input('1.회원가입 2.로그인 3.특정 회원정보 출력 4.모든 회원정보 출력 99.종료:')
+
+        if inputData == 1:
+            sign_up()
+        elif inputData == 2:
+              sign_up()
+              
+        elif inputData == 3:
+            find_members()
+        elif inputData == 4:
+            print_all_members()
+        elif inputData == 99:
+            print('프로그램 종료')
+            break
+        else:
+            print('다시 선택하십시오')
+            
