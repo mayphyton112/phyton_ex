@@ -483,8 +483,8 @@ def sign_up():
                 print('로그인 성공')
                 return
          
-print('로그인 실패')
-print('id나 pw가 틀렸습니다. 다시 입력하세요')
+        print('로그인 실패')
+        print('id나 pw가 틀렸습니다. 다시 입력하세요')
 
 def find_members():
     user_id = input('선택할 회원 id 입력: ')
