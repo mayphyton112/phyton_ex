@@ -12,4 +12,5 @@ calculator.division(10,0)
 
 import convertUnitModule
 inputMmData = int(input('길이(mm) 입력:'))
-result = convertUnitModule()
+result = convertUnitModule.converUnit(inputMmData)
+convertUnitModule.printlength(result)
