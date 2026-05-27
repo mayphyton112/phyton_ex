@@ -19,9 +19,9 @@ print(f'math. fabs(-3.1415):{math. fabs(-3.1415)} ') #절댓값
 print(f'math. ceil(-3.1415):{math. ceil(-3.1415)} ') #올림
 print(f'math. floor(-3.1415):{math. floor(-3.1415)} ') #내림
 print(f'math. trunc(-3.1415):{math. trunc(-3.1415)} ') #버림
-print(f'math. gcd(-3.1415):{math. gcd(9, 21)} ') #최대 공약수
-print(f'math. factorial(-3.1415):{math. factorial(7)} ') #팩토리얼 값 !
-print(f'math. sqrt(-3.1415):{math. sqrt(9)} ') #제곱근
+print(f'math. gcd(9, 21):{math. gcd(9, 21)} ') #최대 공약수
+print(f'math. factorial(7):{math. factorial(7)} ') #팩토리얼 값 !
+print(f'math. sqrt(9):{math. sqrt(9)} ') #제곱근
 
 #파이썬 내장 함수 중에서 수학과 관련된 함수
 

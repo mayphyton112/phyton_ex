@@ -1,0 +1,9 @@
+https://search.naver.com/search.naver?
+
+where=nexearch&
+sm=top_hty&
+fbm=0&
+ie=utf8&
+query=weather&
+%EB%82%A0%EC%94%A8       파라미터
+ackey=9hctottv
