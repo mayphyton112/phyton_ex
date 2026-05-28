@@ -7,3 +7,13 @@ ie=utf8&
 query=weather&
 %EB%82%A0%EC%94%A8       파라미터
 ackey=9hctottv
+
+<book>
+    <title> XML입문 </title>
+    <author>홍길동)</author>
+
+
+<책>    -한글로 만들 수도 있다 .
+ 
+JSON
+
