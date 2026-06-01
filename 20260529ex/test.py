@@ -44,4 +44,4 @@ print(f'summerfruits: {fruits['summerfruits']}')
 '''
 
 #수정
-fruits['summerfruits']['수박'] = 
+fruits['summerfruits']['수박'] = ''
