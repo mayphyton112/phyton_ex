@@ -47,8 +47,8 @@ class MemberService:
     
     #회원 로그인
     def sign_in(self):
-        mId = input('Input member ID:')
-        mPw = input('Input member PW:')
+        mId = input('Input member ID:').strip()
+        mPw = input('Input member PW:').strip()
 
         self.members = self.load_members()
         if mId in self.members and self.members[mId]['mPw'] == mPw:
@@ -70,14 +70,14 @@ class MemberService:
 
     #회원 수정
     def modify(self):
-        mPW = input('새 pw 입력: ')
-        mMail = input('새 mail 입력: ')
-        mPhone = input('새 phone 입력: ')
+        mPw = input('새 pw 입력: ').strip()
+        mMail = input('새 mail 입력: ').strip()
+        mPhone = input('새 phone 입력: ').strip()
 
         self.members = self.load_members()
         memberForModify = self.members[session.getSignInedMemberId()]
 
-        memberForModify['mPw'] = mPW
+        memberForModify['mPw'] = mPw
         memberForModify['mMail'] = mMail
         memberForModify['mPhone'] = mPhone
         memberForModify['mModDate'] = util_time.getcurruentDateTime()
@@ -107,7 +107,7 @@ class MemberService:
         while flag:
         #    if session.signInedMemberId == '':
 
-           if session.setSignInedMemberId() =='':
+           if session.getSignInedMemberId() == '':
                menuNum = int(input('1. Sign_up 2.sign_in  99. service_out' ))
            else:
                menuNum = int(input('3. sign_out 4. modify 5. delete 99. service_out' ))

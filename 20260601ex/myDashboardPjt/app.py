@@ -1,23 +1,26 @@
 import config
 from member import member_service
 from bank import bank_service
-
+from memo import memo_service
+from todo import todo_service
 def main():
     flag = True
     while flag:
         menuNum = int(input('1. MEMBER  2. BANK  3. MEMO  4. TODO  99.SYSTEM-OUT' ))
         if menuNum == config.MEMBER_SERVICE:
-            MemberService = member_service.MemberService()
-            MemberService.run()
+            # MemberService = member_service.MemberService()
+            # MemberService.run()
+            member_service.MemberService().run()
         
         elif menuNum == config.BANK_SERVICE:
-            BankService=bank_service.BankService()
-            BankService.run()
+            # BankService=bank_service.BankService()
+            # BankService.run()
+            bank_service.BankService().run()
             
         elif menuNum == config.MEMO_SERVICE:
-            pass
+            memo_service.MemoService().run()
         elif menuNum == config.TODO_SERVICE:
-            pass
+            todo_service.TodoService().run()
         elif menuNum == config.SYSTEM_OUT:
             flag = False
 

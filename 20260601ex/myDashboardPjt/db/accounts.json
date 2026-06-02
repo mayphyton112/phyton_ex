@@ -1,0 +1,44 @@
+{
+    "gildong": {
+        "563e7a54-85bf-4cbe-9fee-cb58d2781ca9": {
+            "balance": 0,
+            "histories": [
+                {
+                    "wAmount": 2000,
+                    "wHistory": " aaaa",
+                    "wRegData": "2026-06-02 11:08:41",
+                    "wmodDate": "2026-06-02 11:08:41"
+                },
+                {
+                    "dAmount": 2000,
+                    "dHistory": " aaaa",
+                    "dRegData": "2026-06-02 11:08:21",
+                    "dmodDate": "2026-06-02 11:08:21"
+                },
+                {
+                    "wAmount": 2000,
+                    "wHistory": " aaaa",
+                    "wRegData": "2026-06-02 11:07:27",
+                    "wmodDate": "2026-06-02 11:07:27"
+                },
+                {
+                    "dAmount": 2000,
+                    "dHistory": " ...",
+                    "dRegData": "2026-06-02 10:59:05",
+                    "dmodDate": "2026-06-02 10:59:05"
+                }
+            ]
+        },
+        "1b86120f-6022-4175-95e6-fdea5802e741": {
+            "balance": 3000,
+            "histories": [
+                {
+                    "dAmount": 3000,
+                    "dHistory": " aaaaa",
+                    "dRegData": "2026-06-02 10:59:38",
+                    "dmodDate": "2026-06-02 10:59:38"
+                }
+            ]
+        }
+    }
+}

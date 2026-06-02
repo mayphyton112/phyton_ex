@@ -4,6 +4,7 @@ import session
 import os
 import json
 import uuid
+from util import util_time
 
 class BankService:
     def __init__(self):
@@ -20,7 +21,7 @@ class BankService:
         print(f'ROOT_DIR: {ROOT_DIR}')
         
         # db/accounts.json
-        self.dbFile = os.path.join(ROOT_DIR, 'db', 'members.json')
+        self.dbFile = os.path.join(ROOT_DIR, 'db', 'accounts.json')
         print(f'self.dbFile: {self.dbFile}')
         #C:\ktj\python\python_ex\20260601ex\myDashboardPjt\db\accounts.json
 
@@ -59,14 +60,29 @@ class BankService:
         flag = True
         while flag:
 
-            if self.isMYAccount():
-                menuNum = int(input('1.ACCOUNT_LIST 2.NEW_ACCOUNT 99.SERVICE OUT '))
+            if self.isMYAccounts():
+                menuNum = int(input('1.ACCOUNT_LIST 2.NEW_ACCOUNT 3.DEPOSIT 4.WITHDRAWAL 99.SERVICE OUT '))
             else:
                 print('No account yet')
-                menuNum = int(input('3.DEPOSIT 4.WITHDRAWL 99.SERVICE OUT '))
+                menuNum = int(input('2.NEW_ACCOUNT 99.SERVICE OUT '))
 
             if menuNum == bank_config.ACCOUNT_LIST:
-                pass
+                self.accounts = self. load_accounts()
+                myAccounts = self.accounts[session.getSignInedMemberId()]
+
+                for idx, myaccount in enumerate(myAccounts.keys()):
+                    print('=' * 80)
+                    print(f"[{idx +1}]: {myaccount}: {myAccounts[myAccounts]['balance']}")
+                    print('-' * 80)
+                    print('날짜/시간 \t\t 내역 \t\t\t 입금 \t\t 출금')
+                    for hisitory in myAccounts[myAccounts]['histories']:
+                        if 'dAmount' in hisitory:
+                            print(f'{hisitory["dRegDate"]} \t {hisitory["dHistory"]} \t\t\t {hisitory["dAmount"]}')
+                        else:
+                            print(f'{hisitory["wRegDate"]} \t {hisitory["wHistory"]} \t\t\t\t\t {hisitory["wAmount"]}')
+                    print()
+
+
             elif menuNum == bank_config.NEW_ACCOUNT:
                 self.accounts = self.load_accounts()
                 if session.getSignInedMemberId() not in self.accounts:
@@ -86,9 +102,97 @@ class BankService:
                     print(f'self.load_accounts : {self.load_accounts()}')
             
             elif menuNum == bank_config.DEPOSIT:
-                pass
-            elif menuNum == bank_config.WITHDRAWL:
-                pass
+                self.accounts = self.load_accounts()
+                myAccounts = self.accounts[session.getSignInedMemberId()]
+
+                print('\nMy Accounts---------------------------------------')
+                for idx, account in enumerate(myAccounts.keys()):
+                    print(f'[{idx+1}]: {account}')
+                print('--------------------------------------------------\n')
+                '''
+                My Accounts---------------------------------------
+                [1]account: 563e7a54-85bf-4cbe-9fee-cb58d2781ca9
+                [2]account: 1b86120f-6022-4175-95e6-fdea5802e741
+                --------------------------------------------------
+                '''
+                depositAccountNumber = ''
+                while True:
+                    depositAccountNumber = input('Enter deposit account number: ')
+                    if depositAccountNumber not in myAccounts:
+                        print('THE ACCOUNT IS NOT FOUND')
+                        print('\nMy Accounts---------------------------------------')
+                        for idx, account in enumerate(myAccounts.keys()):
+                            print(f'[{idx+1}]account: {account}')
+                        print('--------------------------------------------------\n')
+                    else:
+                        break
+    
+                '''
+                 563e7a54-85bf-4cbe-9fee-cb58d2781ca9  이런것을 방지하기 위해 방지 코드를 넣는다.
+                '''
+
+                depositAmount = int(input('ENTER DEPOSIT AMOUNT:'))
+                depositHistory = input('ENTER DEPOSIT HISTORY')
+                deposit = {
+                    'dAmount' : depositAmount,
+                    'dHistory': depositHistory,
+                    'dRegData': util_time.getcurruentDateTime(),
+                    'dmodDate': util_time.getcurruentDateTime()
+                }
+
+                myAccounts[depositAccountNumber]['balance'] += depositAmount
+                myAccounts[depositAccountNumber]['histories'].insert(0, deposit)#append와  insert 중 
+
+                self.save_accounts(self.accounts)
+                print('DEPOSIT SUCCESS')
+
+                if root_config.DEV_MOD:
+                    print(f'self.load_accounts(): {self.load_accounts()}')
+
+            elif menuNum == bank_config.WITHDRAWAL:
+                self.accounts = self.load_accounts()
+                myAccounts = self.accounts[session.getSignInedMemberId()]
+
+                print('\nMy Accounts---------------------------------------')
+                for idx, account in enumerate(myAccounts.keys()):
+                    print(f'[{idx+1}]account: {account}')
+                print('--------------------------------------------------\n')
+
+                withdrawalAccountNumber = ''
+                while True:
+                    withdrawalAccountNumber = input('Enter withdrawal account number: ')
+                    if withdrawalAccountNumber not in myAccounts:
+                        print('THE ACCOUNT IS NOT FOUND')
+                        print('\nMy Accounts---------------------------------------')
+                        for idx, account in enumerate(myAccounts.keys()):
+                            print(f'[{idx+1}]: {account}')
+                        print('--------------------------------------------------\n')
+                    else:
+                        break
+                '''
+                 563e7a54-85bf-4cbe-9fee-cb58d2781ca9  이런것을 방지하기 위해 방지 코드를 넣는다.
+                '''
+                withdrawalAmount = int(input('ENTER WITHDRAWAL AMOUNT:'))
+                withdrawalHistory = input('ENTER WITHDRAWAL HISTORY')
+                withdrawal = {
+                    'wAmount' : withdrawalAmount,
+                    'wHistory': withdrawalHistory,
+                    'wRegData': util_time.getcurruentDateTime(),
+                    'wmodDate': util_time.getcurruentDateTime()
+                }
+
+                if withdrawalAmount > myAccounts[withdrawalAccountNumber]['balance']:
+                    print('Error, check your Balance')
+                else: 
+                     myAccounts[withdrawalAccountNumber]['balance'] -= withdrawalAmount
+                     myAccounts[withdrawalAccountNumber]['histories'].insert(0, withdrawal)#append와  insert 중 
+                     
+                     self.save_accounts(self.accounts)
+                     print('WITHDRAWAL SUCCESS')
+                
+                if root_config.DEV_MOD:
+                    print(f'self.load_accounts(): {self.load_accounts()}')
+
             elif menuNum == bank_config.SERVICE_OUT:
                 flag = False
 

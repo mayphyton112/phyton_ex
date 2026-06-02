@@ -1,9 +1,9 @@
-signInedMemberId = ''
+signInedMemberId ='gildong'
 
 #setter
 def setSignInedMemberId(mId=''):
-    global SignInedMemberId
-    SignInedMemberId = mId
+    global signInedMemberId
+    signInedMemberId = mId
 
 #getter
 def getSignInedMemberId():
