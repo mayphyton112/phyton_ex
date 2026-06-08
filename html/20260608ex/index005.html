@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>form(양식) 태그</title>
+</head>
+<body>
+    <!-- form(양식)태그 -->
+    <form action="http://192.168.0.105/newmember/sign-up" 
+          method="post"
+          name="signupform">
+        <input type="text" placeholder="회원 ID 입력">
+        <br>
+        <input type="text" placeholder="회원 NAME 입력">
+        <br>
+        <input type="password" placeholder="회원 PW 입력">
+        <br>
+        <input type="text" placeholder="회원 PHONE 입력">
+        <br>
+        <input type="text" placeholder="회원 NAME 입력">
+        <br>
+        <input type="email" placeholder="회원 Mail 입력">
+        <br>
+        <input type="number" min="1" max="20" placeholder="회원 AGE 입력">
+        <input type="number" value="10" min="1" max="20" placeholder="회원 AGE 입력">
+        <br>
+        종아하는 색상: <input type="color" value="#1B51A8">
+        <br>
+        생일: <input type="date">
+        <br>
+        공부하고싶은날짜시간: <input type="datetime-local">
+        <br>
+        당신 국가:
+        <select>
+            <option>대한민국</option>
+            <option>미국</option>
+            <option>일본</option>
+            <option>중국</option>
+            <option>영국</option>
+        </select>
+        <br>
+        취미: 축구:<input type="checkbox"> 농구:<input type="checkbox"> 배구:<input type="checkbox">
+        <br>
+        성구분: 남:<input type="radio" name="gender"> 여:<input type="radio" name="gender">
+        <br>
+        직업:
+        학생: <input type="radio" name="job">
+        회사원: <input type="radio" name="job">
+        자영업: <input type="radio" name="job">
+        백수: <input type="radio" name="job">
+        은퇴: <input type="radio" name="job">
+
+        <br>
+        <!-- <button>회원가입</button>
+        <input type="button" value="회원가입">  -->
+        <input type="submit" value="회원가입"> <input type="reset" value="초기화"> 
+        <!-- 시간까지 설정가능 -->
+        <!-- RGB:255 0 0 -->
+        <!-- 여기서는 BGR-->
+        
+
+    </form>
+
+    <br><br>
+
+    <form>
+        <form 
+          action="http://192.168.0.105/newmember/sign-up" 
+          method="post"
+          name="signupform">
+          <input type="text" placeholder="user id">
+          <br>
+          <input type="text" placeholder="user pw">
+          <br>
+          <textarea rows="10"></textarea>
+          <br>
+          <input type="submit" value="로그인">
+
+    </form>
+
+
+</body>
+</html>
